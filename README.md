@@ -1,37 +1,74 @@
-# curriculum-databases-projects-template
+# Ruby-Group-Capstone
+In this group project, will be created a console app that will help the user to keep a record of different types of things they won: books, music albums, movies, and games. Everything will be based on the UML class diagram presented below. The data will be stored in JSON files but also will be prepared in a database with tables structure analogical to the program's class structure.
 
-> This template should be used for database related projects at Microverse.
-> Generate your own repository, update this README and edit all files content while working on projects. You should not be adding any new files unless asked otherwise.
+## Built With
 
+- Ruby
+- SQL
 
 ## Getting Started
+- [Install Ruby](https://www.ruby-lang.org/en/documentation/installation/) on your local machine 
+- Clone [this repository](https://github.com/Meri-MG/Ruby-Group-Capstone)
+  ```
+  git clone git@github.com:Meri-MG/Ruby-Group-Capstone.git
+  ```
+- To get started, In the root directory run:
+  ```
+  gem install bundler
+  ```
+  Then run:
+  ```
+  bundle install
+  ```
+  Open terminal and run ruby app in the command Line:
+  ```
+  ruby library.rb
+  ```
 
-This repository includes files with plain SQL that can be used to recreate a database:
+## Tests
 
-- Use [schema.sql](./schema.sql) to create all tables.
-- Use [data.sql](./data.sql) to populate tables with sample data.
-- Check [queries.sql](./queries.sql) for examples of queries that can be run on a newly created database. **Important note: this file might include queries that make changes in the database (e.g., remove records). Use them responsibly!**
+In order to run unit tests on the local machine Rspec gem should be installed 
+- run in the terminal 
+  ```
+  gem install rspec
+  ```
+- After installation run
+  ```
+  rspec spec/file_name.rb
+  ```
+- If you are interested in running all the tests together then
+  ```
+  rspec spec
+  ```
+- For more information please visit [RubyGuides](https://www.rubyguides.com/2018/07/rspec-tutorial/).
+## Author
+
+:woman: **Meri Gogichashvili**
+
+- GitHub: [@Meri-MG](https://github.com/Meri-MG)
+- LinkedIn: [Meri Gogichashvili](https://www.linkedin.com/in/meri-gogichashvili/)
+
+:man: **Ellis Ngona**
 
 
-## Authors
+- GitHub: [@mwanawabangona](https://github.com/mwanawabangona)
+- LinkedIn: [Ellis Ngona](https://www.linkedin.com/in/ellisngona/)
 
-👤 **Author1**
+:man: **Bohdan Shcherbak**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@akucintavalent](https://github.com/akucintavalent)
+- LinkedIn: [Bohdan Shcherbak](https://www.linkedin.com/in/bohdan-shcherbak/)
 
-👤 **Author2**
+:woman: **Lilian Moraa**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@lily-coder](https://github.com/lily-coder)
+- LinkedIn: [Lilian Moraa](https://www.linkedin.com/in/lilian-moraa-99950b1b8/)
 
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page](https://github.com/Meri-MG/Ruby-Group-Capstone/issues).
 
 ## Show your support
 
