@@ -1,6 +1,9 @@
-require_relative './Item'
+require_relative '../item'
 
 class Label
+  @@labels = []
+  @@labels_filename = 'labels.json'
+
   attr_accessor :title, :color
   attr_reader :id, :items
 

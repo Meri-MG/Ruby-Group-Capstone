@@ -10,7 +10,7 @@ module DataLayer
     obj.instance_variables.each_with_object({}) do |var, hash|
       key = var.to_s.delete('@')
       value = obj.instance_variable_get(var)
-      if %w[Book Label Item].include?(value.class.name)
+      if %w[Book Label].include?(value.class.name)
         value = object_to_hash(value)
       end
       hash[key] = value
@@ -30,6 +30,7 @@ module DataLayer
       Book.new(title: hash['title'], publisher: hash['publisher'], cover_state: hash['cover_state'], publish_date: hash['publish_date'])
     when 'Label'
       Label.new(title: hash['title'], color: hash['color'])
+    end
   end
 
   def save_data(filename, data)

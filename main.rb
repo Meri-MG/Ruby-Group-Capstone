@@ -1,7 +1,21 @@
+require_relative './Books/class_functions'
+
 # rubocop: disable Metrics
 
 class App
+  include DataLayer
+
+  def initialize
+    @functions = Functions.new
+  end
+
   def run
+    # Load files
+
+    # Books
+    books_path = Book.class_variable_get(:@@books_filename)
+    Book.overwrite_books(read_data(books_path).map { |hash| hash_to_object(hash, 'Book') })
+
     puts 'Welcome to your Catalog!'
 
     loop do
@@ -13,6 +27,8 @@ class App
 
       option_chosen(option_entry)
     end
+
+    @functions.save_on_exit
   end
 
   def list_of_options
@@ -36,7 +52,7 @@ class App
   def option_chosen(option)
     case option
     when '1'
-      puts '1'
+      @functions.list_books
     when '2'
       puts '2'
     when '3'
@@ -52,7 +68,7 @@ class App
     when '8'
       puts '8'
     when '9'
-      puts '9'
+      @functions.create_book
     when '10'
       puts '10'
     when '11'
@@ -60,7 +76,7 @@ class App
     when '12'
       puts '12'
     when '0'
-      puts 'E'
+      puts ''
     else
       puts 'Seems like an invalid entry!'
     end

@@ -1,14 +1,16 @@
-require_relative '../Item'
+require_relative '../item'
 
 class Book < Item
+  @@books = []
+  @@books_filename = 'books.json'
+
   attr_accessor :title, :publisher, :cover_state
 
-  def initialize(title, publisher, cover_state, id, publish_date, archived: false)
-    super(id, publish_date, archived: false)
+  def initialize(title, publisher, cover_state, publish_date)
+    super(id: nil, publish_date: publish_date, archived: false)
     @title = title
     @publisher = publisher
     @cover_state = cover_state
-    @archived = archived
   end
 
   def can_be_archived?
@@ -17,5 +19,9 @@ class Book < Item
     else
       @archived = false
     end
+  end
+
+  def self.overwrite_books(arr)
+    @@books = arr
   end
 end

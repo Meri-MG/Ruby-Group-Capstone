@@ -1,3 +1,5 @@
+require 'date'
+
 class Item
   attr_accessor :id, :publish_date, :archived
   attr_reader :label, :genre, :author, :source
