@@ -1,3 +1,5 @@
+# rubocop: disable Metrics
+
 class App
   def run
     puts 'Welcome to your Catalog!'
@@ -67,3 +69,5 @@ end
 
 app = App.new
 app.run
+
+# rubocop: enable Metrics
