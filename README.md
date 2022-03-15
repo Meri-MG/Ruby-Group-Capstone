@@ -22,7 +22,7 @@ In this group project, will be created a console app that will help the user to 
   ```
   Open terminal and run ruby app in the command Line:
   ```
-  ruby library.rb
+  ruby main.rb
   ```
 
 ## Tests
