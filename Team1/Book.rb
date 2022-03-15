@@ -1,4 +1,4 @@
-require_relative './Item'
+require_relative '../Item'
 
 class Book < Item
   attr_accessor :publisher, :cover_state
@@ -7,18 +7,14 @@ class Book < Item
     super(id, publish_date, archived = false)
     @publisher = publisher
     @cover_state = cover_state
+    @archived = archived
   end
 
-  
   def can_be_archived?
     if can_be_archived? || @cover_state == 'bad'
-      @achived = true 
-    else false
+      @achived = true
+    else
+      @archived = false
     end
-  end
-
-  def classroom=(classroom)
-    @classroom = classroom
-    classroom.add_student(self) unless classroom.students.include?(self)
   end
 end
