@@ -1,17 +1,18 @@
 require 'date'
 
+# rubocop:disable Style/ClassVars
+
 class Item
+  @@id = 1
+
   attr_accessor :publish_date
   attr_reader :id, :archived, :label, :genre, :author, :source
 
   def initialize(publish_date, archived: false)
-    @id = Random.rand(1..100)
+    @id = @@id
+    @@id += 1
     @publish_date = Date.parse(publish_date)
     @archived = archived
-  end
-
-  def move_to_archive
-    @archived = true if can_be_archived?
   end
 
   def label=(label)
@@ -34,11 +35,19 @@ class Item
     @source.add_item(self) unless @source.items.include?(self)
   end
 
+  def move_to_archive
+    @archived = true if can_be_archived?
+  end
+
   private
 
   def can_be_archived?
     current_date = Date.today
-    year = current_date.year - @publish_date.year
-    year >= 10
+
+    return unless current_date.year - @publish_date.year >= 10
+
+    current_date.month < @publish_date.month
   end
 end
+
+# rubocop:enable Style/ClassVars
