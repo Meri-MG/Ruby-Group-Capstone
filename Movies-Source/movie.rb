@@ -14,7 +14,7 @@ class Movie < Item
   end
 
   def self.overwrite_movies(movies)
-    @@books = movies
+    @@movies = movies
   end
 
   def to_s
