@@ -17,6 +17,10 @@ class Movie
     @@books = movies
   end
 
+  def to_s
+    "Title: #{@title}, Silent: #{@silent}, Publish_date: #{@publish_date}"
+  end
+
   protected
 
   def can_be_archived?

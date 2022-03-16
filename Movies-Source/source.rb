@@ -15,6 +15,10 @@ class Source
     @items = []
   end
 
+  def to_s
+    "Name: #{@name}, Items: #{@items}"
+  end
+
   def add_item(item)
     @items << item
     item.source = self
