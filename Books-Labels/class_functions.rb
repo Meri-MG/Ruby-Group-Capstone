@@ -9,11 +9,19 @@ class Functions
     Book.class_variable_get(:@@books).each_with_index.map do |book, i|
       puts "#{i + 1}) Title: #{book.title}, Publisher: #{book.publisher}, Cover_state: #{book.cover_state}, Publish_date: #{book.publish_date}"
     end
+
+    if Book.class_variable_get(:@@books).length == 0
+      puts "No available Books for the moment, please add one!"
+    end
   end
 
   def list_labels
     Label.class_variable_get(:@@labels).each_with_index.map do |book, i|
       puts "#{i + 1}) Title: #{label.title}, Color: #{label.color}"
+    end
+
+    if Label.class_variable_get(:@@labels).length == 0
+      puts "No available Labels for the moment!"
     end
   end
 

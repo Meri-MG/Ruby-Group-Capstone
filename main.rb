@@ -1,4 +1,4 @@
-require_relative './Books/class_functions'
+require_relative './Books-Labels/class_functions'
 
 # rubocop: disable Metrics
 

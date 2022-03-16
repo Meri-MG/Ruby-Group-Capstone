@@ -1,17 +1,25 @@
 require_relative '../item'
 
+# rubocop:disable Style/ClassVars
+
 class Book < Item
   @@books = []
   @@books_filename = 'books.json'
 
-  attr_accessor :title, :publisher, :cover_state
+  attr_accessor :title, :publisher, :cover_state, :publish_date
 
-  def initialize(title, publisher, cover_state, publish_date)
-    super(id: nil, publish_date: publish_date, archived: false)
+  def initialize(title, publisher, cover_state, publish_date, archived = false)
+    super(publish_date, archived = false)
     @title = title
     @publisher = publisher
     @cover_state = cover_state
   end
+
+  def self.overwrite_books(arr)
+    @@books = arr
+  end
+
+  private
 
   def can_be_archived?
     if can_be_archived? || @cover_state == 'bad'
@@ -20,8 +28,6 @@ class Book < Item
       @archived = false
     end
   end
-
-  def self.overwrite_books(arr)
-    @@books = arr
-  end
 end
+
+# rubocop:enable Style/ClassVars
