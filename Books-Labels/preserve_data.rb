@@ -23,8 +23,7 @@ module DataLayer
   def hash_to_object(hash, classname)
     case classname
     when 'Book'
-      Book.new(hash['title'], hash['publisher'], hash['cover_state'], publish_date: hash['publish_date'],
-                                                                      archived: hash['archived'])
+      Book.new(hash['title'], hash['publisher'], hash['cover_state'], hash['publish_date'], hash['archived'])
     when 'Label'
       Label.new(title: hash['title'], color: hash['color'])
     end

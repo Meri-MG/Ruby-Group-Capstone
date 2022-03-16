@@ -8,8 +8,8 @@ class Book < Item
 
   attr_accessor :title, :publisher, :cover_state, :publish_date
 
-  def initialize(title, publisher, cover_state, publish_date, _archived = false)
-    super(publish_date, archived = false)
+  def initialize(title, publisher, cover_state, publish_date, archived = false)
+    super(publish_date, archived)
     @title = title
     @publisher = publisher
     @cover_state = cover_state
