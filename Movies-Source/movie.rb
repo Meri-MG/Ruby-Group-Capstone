@@ -4,9 +4,15 @@ class Movie
   attr_accessor :silet
   attr_reader :title
 
-  def initialize(title, silet, publish_date, archived = false)
+  def initialize(title, silent, publish_date, archived = false)
     super(publish_date, archived)
     @title = title
-    @silet = silet
+    @silent = silet
+  end
+
+  protected
+
+  def can_be_archived?
+    super || silent
   end
 end

@@ -39,7 +39,7 @@ class Item
     @archived = true if can_be_archived?
   end
 
-  private
+  protected
 
   def can_be_archived?
     current_date = Date.today
