@@ -27,7 +27,7 @@ class App
 
       option_chosen(option_entry)
     end
-
+    
     @functions.save_on_exit
   end
 
