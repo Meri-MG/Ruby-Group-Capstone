@@ -4,7 +4,7 @@ class Movie < Item
   @@movies = []
   @@movies_filename = 'movies.json'
 
-  attr_accessor :silet
+  attr_accessor :silent
   attr_reader :title
 
   def initialize(title, silent, publish_date, archived = false)
