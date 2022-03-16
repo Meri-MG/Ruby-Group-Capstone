@@ -3,16 +3,12 @@ require 'pry'
 require_relative 'book'
 require_relative 'label'
 
-# rubocop: disable Metrics
-
 module DataLayer
   def object_to_hash(obj)
     obj.instance_variables.each_with_object({}) do |var, hash|
       key = var.to_s.delete('@')
       value = obj.instance_variable_get(var)
-      if %w[Book Label].include?(value.class.name)
-        value = object_to_hash(value)
-      end
+      value = object_to_hash(value) if %w[Book Label].include?(value.class.name)
       hash[key] = value
       case obj.class.name
       when 'Book'
@@ -27,7 +23,8 @@ module DataLayer
   def hash_to_object(hash, classname)
     case classname
     when 'Book'
-      Book.new(hash['title'], hash['publisher'], hash['cover_state'], publish_date: hash['publish_date'], archived: hash['archived'])
+      Book.new(hash['title'], hash['publisher'], hash['cover_state'], publish_date: hash['publish_date'],
+                                                                      archived: hash['archived'])
     when 'Label'
       Label.new(title: hash['title'], color: hash['color'])
     end
@@ -45,5 +42,3 @@ module DataLayer
     data
   end
 end
-
-  # rubocop: enable Metrics
