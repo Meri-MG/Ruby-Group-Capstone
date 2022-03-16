@@ -7,12 +7,12 @@ class Movie
   def initialize(title, silent, publish_date, archived = false)
     super(publish_date, archived)
     @title = title
-    @silent = silet
+    @silent = silent
   end
 
   protected
 
   def can_be_archived?
-    super || silent
+    super || @silent
   end
 end
