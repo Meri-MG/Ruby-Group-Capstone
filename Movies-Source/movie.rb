@@ -1,6 +1,9 @@
 require_relative '../item'
 
 class Movie
+  @@movies = []
+  @@movies_filename = 'movies.json'
+
   attr_accessor :silet
   attr_reader :title
 
@@ -8,6 +11,10 @@ class Movie
     super(publish_date, archived)
     @title = title
     @silent = silent
+  end
+
+  def self.overwrite_movies(movies)
+    @@books = movies
   end
 
   protected

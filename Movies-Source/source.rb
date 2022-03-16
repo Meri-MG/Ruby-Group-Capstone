@@ -4,6 +4,8 @@ class Source
   attr_accessor :name
   attr_reader :id, :items
 
+  @@sources = []
+  @@sources_filename = 'sources.json'
   @@id = 1
 
   def initialize(name)
