@@ -1,7 +1,19 @@
+require_relative './Movies-Source/class_functions'
+
 # rubocop: disable Metrics
 
 class App
+  include DataLayer
+
+  def initialize
+    @functions = Functions.new
+  end
+
   def run
+
+    movies_path = Movie.class_variable_get(:@@movies_filename)
+    Movie.overwrite_movies(read_data(movies_path).map { |hash| hash_to_object(hash, 'Movie') })
+
     puts 'Welcome to your Catalog!'
 
     loop do
@@ -13,6 +25,8 @@ class App
 
       option_chosen(option_entry)
     end
+
+    @functions.save_on_exit
   end
 
   def list_of_options
@@ -40,7 +54,7 @@ class App
     when '2'
       puts '2'
     when '3'
-      puts '3'
+      @functions.list_movies
     when '4'
       puts '4'
     when '5'
@@ -56,7 +70,7 @@ class App
     when '10'
       puts '10'
     when '11'
-      puts '11'
+      @functions.create_movie
     when '12'
       puts '12'
     when '0'
