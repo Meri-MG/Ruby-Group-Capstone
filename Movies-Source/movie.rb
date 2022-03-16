@@ -1,6 +1,6 @@
 require_relative '../item'
 
-class Movie
+class Movie < Item
   @@movies = []
   @@movies_filename = 'movies.json'
 
