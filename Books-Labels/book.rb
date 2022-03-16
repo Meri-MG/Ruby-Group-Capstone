@@ -1,6 +1,7 @@
 require_relative '../item'
 
 # rubocop:disable Style/ClassVars
+# rubocop:disable Style/OptionalBooleanParameter
 
 class Book < Item
   @@books = []
@@ -31,3 +32,4 @@ class Book < Item
 end
 
 # rubocop:enable Style/ClassVars
+# rubocop:enable Style/OptionalBooleanParameter

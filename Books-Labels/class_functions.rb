@@ -7,7 +7,8 @@ class Functions
 
   def list_books
     Book.class_variable_get(:@@books).each_with_index.map do |book, i|
-      puts "#{i + 1}) Title: #{book.title}, Publisher: #{book.publisher}, Cover_state: #{book.cover_state}, Publish_date: #{book.publish_date}"
+      puts "#{i + 1}) Title: #{book.title}, Publisher: #{book.publisher},
+            Cover_state: #{book.cover_state}, Publish_date: #{book.publish_date}"
     end
 
     puts 'No available Books for the moment, please add one!' if Book.class_variable_get(:@@books).length.zero?
