@@ -1,3 +1,9 @@
+CREATE TABLE labels (
+    id INTEGER PRIMARY KEY,
+    title VARCHAR(100),
+    color VARCHAR(100)
+);
+
 CREATE TABLE items (
     id  INTEGER PRIMARY KEY,
     publish_date DATE,
@@ -14,11 +20,5 @@ CREATE TABLE books (
     publish_date DATE,
     archived BOOLEAN,
     item_id INT,
-    FOREIGN KEY(item_id) REFERENCES item(id)
-);
-
-CREATE TABLE labels (
-    id INTEGER PRIMARY KEY,
-    title VARCHAR(100),
-    color VARCHAR(100)
+    FOREIGN KEY(item_id) REFERENCES items(id)
 );

@@ -19,8 +19,8 @@ class Label
   end
 
   def add_item(item)
-    @items << item
-    item.label = self unless item.label == self
+    @items << item unless @items.include?(item)
+    item.label = self
   end
 
   def self.overwrite_labels(arr)
