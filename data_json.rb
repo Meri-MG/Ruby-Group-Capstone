@@ -1,17 +1,16 @@
-class Author
-  attr_accessor :first_name, :last_name
+class Source
+  attr_accessor :name
   attr_writer :id
 
-  def initialize(first_name, last_name)
+  def initialize(name)
     @id = Random.rand(1..1000)
-    @first_name = first_name
-    @last_name = last_name
+    @name = name
     @items = []
   end
 
   def add_item(item)
     @items.push(item) unless @items.include?(item)
-    item.author(self)
+    item.add_source(self)
   end
 
   def show_items
@@ -21,9 +20,8 @@ class Author
   def to_json(*args)
     {
       JSON.create_id => self.class.name,
-      'first_name' => @first_name,
-      'last_name' => @last_name,
       'id' => @id,
+      'name' => @name,
       'items' => @items
     }.to_json(*args)
   end

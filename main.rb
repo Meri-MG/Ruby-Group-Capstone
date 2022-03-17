@@ -1,8 +1,27 @@
 # rubocop: disable Metrics
+require 'json'
+require './game'
+require './item'
+require './author'
+require './create_author'
+require './list_items'
+require './author_json_handle'
+require './data_json'
 
 class App
+  include CreateAuthor
+  include DisplayItems
+  include AuthorJsonHandle
+  include CreateAuthor
+
+  def initialize
+    @games = []
+    @authors = []
+    puts 'Welcome to Catalog My Things App!'
+    puts
+  end
+
   def run
-    puts 'Welcome to your Catalog!'
 
     loop do
       list_of_options
@@ -13,6 +32,7 @@ class App
 
       option_chosen(option_entry)
     end
+    @functions.save_on_exit
   end
 
   def list_of_options
@@ -42,17 +62,17 @@ class App
     when '3'
       puts '3'
     when '4'
-      puts '4'
+      display_games
     when '5'
       puts '5'
     when '6'
       puts '6'
     when '7'
-      puts '7'
+      display_authors
     when '8'
       puts '8'
     when '9'
-      puts '9'
+      @functions.create_book
     when '10'
       puts '10'
     when '11'
@@ -64,6 +84,11 @@ class App
     else
       puts 'Seems like an invalid entry!'
     end
+  end
+
+  def open_files
+    open_games
+    open_authors
   end
 end
 

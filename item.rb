@@ -25,7 +25,7 @@ class Item
     @genre.add_item(self) unless @genre.items.include?(self)
   end
 
-  def author=(author)
+  def add_author=(author)
     @author = author
     author.items.push(self) unless @author.items.include?(self)
   end
@@ -42,12 +42,12 @@ class Item
   private
 
   def can_be_archived?
-    current_date = Date.today
+  current_date = Date.today
 
-    return unless current_date.year - @publish_date.year >= 10
+  return unless current_date.year - @publish_date.year >= 10
 
-    current_date.month < @publish_date.month
-  end
+  current_date.month < @publish_date.month
+end
 end
 
 # rubocop:enable Style/ClassVars
