@@ -1,5 +1,5 @@
 class Genre
-  attr_accessor :name, :arr_i
+  attr_accessor :name, :items
 
   @@id = 1
 
@@ -7,11 +7,11 @@ class Genre
     @id = @@id
     @@id += 1
     @name = name
-    @arr_i = []
+    @items = []
   end
 
   def add_item(item)
-    @arr_i << item
+    @items << item unless @items.include?(item)
     item.genre = self
   end
 end
