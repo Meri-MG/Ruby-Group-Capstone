@@ -73,7 +73,7 @@ class App
     when '12'
       puts '12'
     when '0'
-      puts 'E'
+      puts 'Exit'
     else
       puts 'Seems like an invalid entry!'
     end
