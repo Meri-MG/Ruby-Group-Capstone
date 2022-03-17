@@ -23,6 +23,6 @@ class Game < Item
 
   def can_be_archived?()
     current_date = Date.today
-    super() && @last_played_at.next_year(2) < current_date
+    super() && @last_played_at.year(2) < current_date
   end
 end
