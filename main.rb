@@ -70,13 +70,13 @@ class App
     when '8'
       puts '8'
     when '9'
-      @functions.create_book
+      puts '9'
     when '10'
       puts '10'
     when '11'
       puts '11'
     when '12'
-      puts '12'
+      create_game
     when '0'
       puts 'E'
     else

@@ -1,7 +1,7 @@
 module DisplayItems
   def display_games
     if @games.length.zero?
-      puts 'Sorry! No games are registered!'.upcase
+      puts 'Sorry! No games are registered!'
     else
       puts 'The List of all Games: \n'
       index = 0
@@ -18,7 +18,7 @@ module DisplayItems
 
   def display_authors
     if @authors.length.zero?
-      puts 'Sorry! There is no games registered!'.upcase
+      puts 'Sorry! There are no authors added!'
     else
       puts 'List of all Authors: \n'
       index = 0

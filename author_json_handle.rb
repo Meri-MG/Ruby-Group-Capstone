@@ -18,4 +18,19 @@ module AuthorJsonHandle
     new_object.id = game['id'].to_i
     new_object
   end
+
+  def open_authors
+    if File.exist?('authors.json')
+      JSON.parse(File.read('authors.json')).map do |author|
+        author_object = create_author_object(author)
+        @authors <<< author_object
+      end
+    end
+  end
+
+  def create_author_object(author)
+    new_object = Author.new(author['first_name'], author['last_name'])
+    new_object.id = author['id'].to_i
+    new_object
+  end
 end
