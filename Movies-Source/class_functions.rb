@@ -26,14 +26,12 @@ class Functions
     title = gets.chomp.downcase
 
     print 'Is it silent? [y/n]: '
-    silent =  case gets.chomp.downcase
-              when 'y'
-                true
-              when 'n'
-                false
-              else
-                nil
-              end
+    silent = case gets.chomp.downcase
+             when 'y'
+               true
+             when 'n'
+               false
+             end
 
     print 'Please enter the release date (yyyy/mm/dd): '
     release_date = gets.chomp.downcase

@@ -1,6 +1,7 @@
 require 'date'
 
 # rubocop:disable Style/ClassVars
+# rubocop:disable Style/OptionalBooleanParameter
 
 class Item
   @@id = 1
@@ -51,3 +52,4 @@ class Item
 end
 
 # rubocop:enable Style/ClassVars
+# rubocop:enable Style/OptionalBooleanParameter
