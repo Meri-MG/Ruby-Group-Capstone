@@ -1,4 +1,4 @@
-require_relative './Books-Labels/class_functions'
+require_relative './Movies-Source/class_functions'
 
 # rubocop: disable Metrics
 
@@ -10,6 +10,7 @@ class App
   end
 
   def run
+
     # Load files
 
     # Books
@@ -18,6 +19,9 @@ class App
 
     labels_path = Label.class_variable_get(:@@labels_filename)
     Label.overwrite_labels(read_data(labels_path).map { |hash| hash_to_object(hash, 'Label') })
+    
+    movies_path = Movie.class_variable_get(:@@movies_filename)
+    Movie.overwrite_movies(read_data(movies_path).map { |hash| hash_to_object(hash, 'Movie') })
 
     puts 'Welcome to your Catalog!'
 
@@ -59,7 +63,7 @@ class App
     when '2'
       puts '2'
     when '3'
-      puts '3'
+      @functions.list_movies
     when '4'
       puts '4'
     when '5'
@@ -75,7 +79,7 @@ class App
     when '10'
       puts '10'
     when '11'
-      puts '11'
+      @functions.create_movie
     when '12'
       puts '12'
     when '0'
