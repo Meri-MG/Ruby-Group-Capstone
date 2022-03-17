@@ -1,5 +1,5 @@
-require_relative './classes/music_album'
-require_relative './modules/music_album_mule'
+require_relative './MusicAlbums-Genres/classes/music_album'
+require_relative './MusicAlbums-Genres/modules/music_album_mule'
 # rubocop: disable Metrics
 
 class App
