@@ -1,7 +1,6 @@
 require_relative '../item'
 
 # rubocop:disable Style/ClassVars
-# rubocop:disable Style/OptionalBooleanParameter
 
 class Source
   attr_accessor :name
@@ -29,4 +28,3 @@ class Source
 end
 
 # rubocop:enable Style/ClassVars
-# rubocop:enable Style/OptionalBooleanParameter
