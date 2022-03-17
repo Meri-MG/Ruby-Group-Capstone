@@ -17,6 +17,10 @@ class Source
     @items = []
   end
 
+  def self.overwrite_sources(sources)
+    @@sources = sources
+  end
+
   def to_s
     "Name: #{@name}, Items: #{@items}"
   end

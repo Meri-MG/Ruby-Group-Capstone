@@ -10,8 +10,20 @@ class App
   end
 
   def run
+    # Load files
+
+    # Books
+    books_path = Book.class_variable_get(:@@books_filename)
+    Book.overwrite_books(read_data(books_path).map { |hash| hash_to_object(hash, 'Book') })
+
+    labels_path = Label.class_variable_get(:@@labels_filename)
+    Label.overwrite_labels(read_data(labels_path).map { |hash| hash_to_object(hash, 'Label') })
+
     movies_path = Movie.class_variable_get(:@@movies_filename)
     Movie.overwrite_movies(read_data(movies_path).map { |hash| hash_to_object(hash, 'Movie') })
+
+    sources_path = Source.class_variable_get(:@@sources_filename)
+    Source.overwrite_sources(read_data(sources_path).map { |hash| hash_to_object(hash, 'Source') })
 
     puts 'Welcome to your Catalog!'
 
@@ -49,7 +61,7 @@ class App
   def option_chosen(option)
     case option
     when '1'
-      puts '1'
+      @functions.list_books
     when '2'
       puts '2'
     when '3'
@@ -59,13 +71,13 @@ class App
     when '5'
       puts '5'
     when '6'
-      puts '6'
+      @functions.list_labels
     when '7'
       puts '7'
     when '8'
-      puts '8'
+      @functions.list_sources
     when '9'
-      puts '9'
+      @functions.create_book
     when '10'
       puts '10'
     when '11'
@@ -73,7 +85,7 @@ class App
     when '12'
       puts '12'
     when '0'
-      puts 'E'
+      puts ''
     else
       puts 'Seems like an invalid entry!'
     end
