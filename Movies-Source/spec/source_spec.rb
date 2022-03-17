@@ -3,7 +3,7 @@ require_relative '../movie'
 require 'date'
 
 describe Source do
-  context "When testing the Source class" do
+  context 'When testing the Source class' do
     name = 'This is the name of the source'
     source = Source.new name
 
@@ -19,7 +19,7 @@ describe Source do
       movie = Movie.new 'title', false, '2011/11/11', false
       source.add_item(movie)
       expect(source.items.include?(movie)).to eq true
-      expect(movie.source).to eq source 
+      expect(movie.source).to eq source
     end
   end
 end

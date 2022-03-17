@@ -10,7 +10,6 @@ class App
   end
 
   def run
-
     movies_path = Movie.class_variable_get(:@@movies_filename)
     Movie.overwrite_movies(read_data(movies_path).map { |hash| hash_to_object(hash, 'Movie') })
 

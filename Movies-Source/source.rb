@@ -1,5 +1,8 @@
 require_relative '../item'
 
+# rubocop:disable Style/ClassVars
+# rubocop:disable Style/OptionalBooleanParameter
+
 class Source
   attr_accessor :name
   attr_reader :id, :items
@@ -24,3 +27,6 @@ class Source
     item.source = self
   end
 end
+
+# rubocop:enable Style/ClassVars
+# rubocop:enable Style/OptionalBooleanParameter

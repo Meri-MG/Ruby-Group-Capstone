@@ -1,5 +1,8 @@
 require_relative '../item'
 
+# rubocop:disable Style/ClassVars
+# rubocop:disable Style/OptionalBooleanParameter
+
 class Movie < Item
   @@movies = []
   @@movies_filename = 'movies.json'
@@ -27,3 +30,6 @@ class Movie < Item
     super || @silent
   end
 end
+
+# rubocop:enable Style/ClassVars
+# rubocop:enable Style/OptionalBooleanParameter

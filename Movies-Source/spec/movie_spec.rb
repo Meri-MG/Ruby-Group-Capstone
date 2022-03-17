@@ -3,7 +3,7 @@ require_relative '../movie'
 require 'date'
 
 describe Movie do
-  context "When testing the Movie class" do
+  context 'When testing the Movie class' do
     title = 'This is the name of the movie'
     silent = false
     publish_date = '2001/01/01'
