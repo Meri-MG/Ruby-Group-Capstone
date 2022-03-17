@@ -16,6 +16,9 @@ class App
     books_path = Book.class_variable_get(:@@books_filename)
     Book.overwrite_books(read_data(books_path).map { |hash| hash_to_object(hash, 'Book') })
 
+    labels_path = Label.class_variable_get(:@@labels_filename)
+    Label.overwrite_labels(read_data(labels_path).map { |hash| hash_to_object(hash, 'Label') })
+
     puts 'Welcome to your Catalog!'
 
     loop do
@@ -62,7 +65,7 @@ class App
     when '5'
       puts '5'
     when '6'
-      puts '6'
+      @functions.list_labels
     when '7'
       puts '7'
     when '8'

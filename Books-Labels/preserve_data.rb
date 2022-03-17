@@ -1,5 +1,4 @@
 require 'json'
-require 'pry'
 require_relative 'book'
 require_relative 'label'
 
@@ -25,7 +24,7 @@ module DataLayer
     when 'Book'
       Book.new(hash['title'], hash['publisher'], hash['cover_state'], hash['publish_date'], hash['archived'])
     when 'Label'
-      Label.new(title: hash['title'], color: hash['color'])
+      Label.new(hash['title'], hash['color'])
     end
   end
 

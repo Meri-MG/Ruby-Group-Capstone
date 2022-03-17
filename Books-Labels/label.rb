@@ -22,6 +22,10 @@ class Label
     @items << item
     item.label = self unless item.label == self
   end
+
+  def self.overwrite_labels(arr)
+    @@labels = arr
+  end
 end
 
 # rubocop:enable Style/ClassVars

@@ -20,14 +20,10 @@ class Book < Item
     @@books = arr
   end
 
-  private
+  protected
 
   def can_be_archived?
-    if can_be_archived? || @cover_state == 'bad'
-      @achived = true
-    else
-      @archived = false
-    end
+    super || @cover_state == 'bad'
   end
 end
 

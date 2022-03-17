@@ -15,7 +15,7 @@ class Functions
   end
 
   def list_labels
-    Label.class_variable_get(:@@labels).each_with_index.map do |_book, i|
+    Label.class_variable_get(:@@labels).each_with_index.map do |label, i|
       puts "#{i + 1}) Title: #{label.title}, Color: #{label.color}"
     end
 
@@ -24,18 +24,18 @@ class Functions
 
   def create_book
     print 'Please, enter the title: '
-    get_title = gets.chomp.downcase
+    book_title = gets.chomp
 
     print 'Please, enter the publisher: '
-    get_publisher = gets.chomp.downcase
+    book_publisher = gets.chomp
 
     print 'Please, enter the cover state of the book: '
-    get_state = gets.chomp.downcase
+    book_state = gets.chomp.downcase
 
     print 'Please, enter the publish date in (yyyy/mm/dd) format: '
-    get_date = gets.chomp.downcase
+    book_date = gets.chomp
 
-    new_book = Book.new(get_title, get_publisher, get_state, get_date)
+    new_book = Book.new(book_title, book_publisher, book_state, book_date)
     Book.class_variable_get(:@@books) << new_book
 
     puts 'Book created successfully'
