@@ -23,7 +23,7 @@ module AuthorJsonHandle
     if File.exist?('authors.json')
       JSON.parse(File.read('authors.json')).map do |author|
         author_object = create_author_object(author)
-        @authors <<< author_object
+        @authors << author_object
       end
     end
   end
