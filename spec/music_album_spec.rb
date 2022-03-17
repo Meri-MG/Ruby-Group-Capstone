@@ -16,7 +16,7 @@ describe MusicAlbum do
   end
 
   it 'music should be an archived' do
-    expect(@music.publish_date).to be #<Date: 2002-01-01 ((2452276j,0s,0n),+0s,2299161j)>
+    expect(@music.publish_date).to be # <Date: 2002-01-01 ((2452276j,0s,0n),+0s,2299161j)>
   end
 
   it 'music should be an archived' do

@@ -10,8 +10,6 @@ class App
     @load_genres = []
   end
 
-  
-
   puts 'Welcome to your Catalog!'
 
   def list_of_options
