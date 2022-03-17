@@ -22,7 +22,6 @@ class App
   end
 
   def run
-
     loop do
       list_of_options
 
@@ -32,7 +31,6 @@ class App
 
       option_chosen(option_entry)
     end
-    @functions.save_on_exit
   end
 
   def list_of_options
