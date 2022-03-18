@@ -1,4 +1,4 @@
-require_relative '../item'
+require './item'
 require_relative '../author'
 
 describe Author do
@@ -13,7 +13,7 @@ describe Author do
     end
 
     it 'Check if items is empty' do
-      expect(@new_author.show_items).to be_empty
+      expect(@new_author.items).to be_empty
     end
   end
 end

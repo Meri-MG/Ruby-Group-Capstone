@@ -1,5 +1,5 @@
 require_relative '../game'
-require_relative '../item'
+require './item'
 describe Game do
   context 'Test class game:' do
     before(:all) do
