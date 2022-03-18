@@ -1,7 +1,6 @@
 CREATE TABLE genres (
-    id  INT GENERATED ALWAYS AS IDENTITY,
-    name VARCHAR(100),
-    PRIMARY KEY(id)
+    id  INT PRIMARY KEY,
+    name VARCHAR(100)
 );
 
 CREATE TABLE sources (
@@ -10,9 +9,15 @@ CREATE TABLE sources (
 );
 
 CREATE TABLE labels (
-    id INTEGER PRIMARY KEY,
+    id INT PRIMARY KEY,
     title VARCHAR(100),
     color VARCHAR(100)
+);
+
+CREATE TABLE authors (
+    id INT PRIMARY KEY,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255)
 );
 
 CREATE TABLE items (
@@ -55,6 +60,14 @@ CREATE TABLE music_albums (
     id  INT PRIMARY KEY,
     name VARCHAR(100),
     on_spotify BOOLEAN,
+    item_id INT,
+    FOREIGN KEY(item_id) REFERENCES item(id)
+);
+
+CREATE TABLE games(
+    id INT GENERATED ALWAYS AS IDENTITY,
+    multiplayer BOOLEAN,
+    last_played_at DATE,
     item_id INT,
     FOREIGN KEY(item_id) REFERENCES item(id)
 );

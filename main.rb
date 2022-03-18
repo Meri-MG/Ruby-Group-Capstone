@@ -2,6 +2,9 @@ require_relative './Movies-Source/class_functions'
 require_relative './MusicAlbums-Genres/classes/music_album'
 require_relative './MusicAlbums-Genres/classes/genre'
 require_relative './MusicAlbums-Genres/classes/methods'
+require_relative './Games-Authors/game'
+require_relative './Games-Authors/author'
+require_relative './Games-Authors/list_items'
 require 'json'
 require './item'
 
@@ -14,6 +17,7 @@ class App
   def initialize
     @functions = Functions.new
     @methods = List.new
+    @show = DisplayItems.new
   end
 
   def run
@@ -32,8 +36,13 @@ class App
     sources_path = Source.class_variable_get(:@@sources_filename)
     Source.overwrite_sources(read_data(sources_path).map { |hash| hash_to_object(hash, 'Source') })
 
-    puts 'Welcome to your Catalog!'
+    games_path = Game.class_variable_get(:@@games_filename)
+    Game.overwrite_games(read_data(games_path).map { |hash| hash_to_object(hash, 'Game') })
 
+    authors_path = Author.class_variable_get(:@@authors_filename)
+    Author.overwrite_authors(read_data(authors_path).map { |hash| hash_to_object(hash, 'Author') })
+
+    puts 'Welcome to your Catalog!'
     loop do
       list_of_options
 
@@ -47,6 +56,7 @@ class App
     puts 'Thanks for using our app!'
 
     @functions.save_on_exit
+    @show.save_info
   end
 
   def list_of_options
@@ -76,13 +86,13 @@ class App
     when '3'
       @functions.list_movies
     when '4'
-      puts '4'
+      @show.display_games
     when '5'
       @methods.list_all_genres
     when '6'
       @functions.list_labels
     when '7'
-      puts '7'
+      @show.display_authors
     when '8'
       @functions.list_sources
     when '9'
@@ -92,7 +102,7 @@ class App
     when '11'
       @functions.create_movie
     when '12'
-      puts '12'
+      @show.create_game
     when '0'
       puts ''
     else
