@@ -1,5 +1,7 @@
-# Ruby-Group-Capstone
+# Catalog of my things
 In this group project, will be created a console app that will help the user to keep a record of different types of things they won: books, music albums, movies, and games. Everything will be based on the UML class diagram presented below. The data will be stored in JSON files but also will be prepared in a database with tables structure analogical to the program's class structure.
+
+![uml-diagram](https://raw.githubusercontent.com/Meri-MG/Ruby-Group-Capstone/Team1/uml.png)
 
 ## Built With
 
@@ -41,6 +43,11 @@ In order to run unit tests on the local machine Rspec gem should be installed
   rspec spec
   ```
 - For more information please visit [RubyGuides](https://www.rubyguides.com/2018/07/rspec-tutorial/).
+
+## Live Presentation
+
+[Video link](https://www.youtube.com/watch?v=zXO6hT4JF2U)
+
 ## Author
 
 :woman: **Meri Gogichashvili**

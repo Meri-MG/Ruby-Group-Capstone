@@ -1,6 +1,7 @@
 require 'date'
 
 # rubocop:disable Style/ClassVars
+# rubocop:disable Style/OptionalBooleanParameter
 
 class Item
   @@id = 1
@@ -8,7 +9,7 @@ class Item
   attr_accessor :publish_date
   attr_reader :id, :archived, :label, :genre, :author, :source
 
-  def initialize(publish_date, archived: false)
+  def initialize(publish_date, archived = false)
     @id = @@id
     @@id += 1
     @publish_date = Date.parse(publish_date)
@@ -39,7 +40,7 @@ class Item
     @archived = true if can_be_archived?
   end
 
-  private
+  protected
 
   def can_be_archived?
     current_date = Date.today
@@ -51,3 +52,4 @@ class Item
 end
 
 # rubocop:enable Style/ClassVars
+# rubocop:enable Style/OptionalBooleanParameter

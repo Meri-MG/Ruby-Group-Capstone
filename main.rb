@@ -1,9 +1,48 @@
+require_relative './Movies-Source/class_functions'
+require_relative './MusicAlbums-Genres/classes/music_album'
+require_relative './MusicAlbums-Genres/classes/genre'
+require_relative './MusicAlbums-Genres/classes/methods'
+require_relative './Games-Authors/game'
+require_relative './Games-Authors/author'
+require_relative './Games-Authors/list_items'
+require 'json'
+require './item'
+
 # rubocop: disable Metrics
 
 class App
-  def run
-    puts 'Welcome to your Catalog!'
+  include DataLayer
+  include MusicAlbumModule
 
+  def initialize
+    @functions = Functions.new
+    @methods = List.new
+    @show = DisplayItems.new
+  end
+
+  def run
+    # Load files
+
+    # Books
+    books_path = Book.class_variable_get(:@@books_filename)
+    Book.overwrite_books(read_data(books_path).map { |hash| hash_to_object(hash, 'Book') })
+
+    labels_path = Label.class_variable_get(:@@labels_filename)
+    Label.overwrite_labels(read_data(labels_path).map { |hash| hash_to_object(hash, 'Label') })
+
+    movies_path = Movie.class_variable_get(:@@movies_filename)
+    Movie.overwrite_movies(read_data(movies_path).map { |hash| hash_to_object(hash, 'Movie') })
+
+    sources_path = Source.class_variable_get(:@@sources_filename)
+    Source.overwrite_sources(read_data(sources_path).map { |hash| hash_to_object(hash, 'Source') })
+
+    games_path = Game.class_variable_get(:@@games_filename)
+    Game.overwrite_games(read_data(games_path).map { |hash| hash_to_object(hash, 'Game') })
+
+    authors_path = Author.class_variable_get(:@@authors_filename)
+    Author.overwrite_authors(read_data(authors_path).map { |hash| hash_to_object(hash, 'Author') })
+
+    puts 'Welcome to your Catalog!'
     loop do
       list_of_options
 
@@ -13,6 +52,11 @@ class App
 
       option_chosen(option_entry)
     end
+
+    puts 'Thanks for using our app!'
+
+    @functions.save_on_exit
+    @show.save_info
   end
 
   def list_of_options
@@ -36,31 +80,31 @@ class App
   def option_chosen(option)
     case option
     when '1'
-      puts '1'
+      @functions.list_books
     when '2'
-      puts '2'
+      @methods.list_all_music_album
     when '3'
-      puts '3'
+      @functions.list_movies
     when '4'
-      puts '4'
+      @show.display_games
     when '5'
-      puts '5'
+      @methods.list_all_genres
     when '6'
-      puts '6'
+      @functions.list_labels
     when '7'
-      puts '7'
+      @show.display_authors
     when '8'
-      puts '8'
+      @functions.list_sources
     when '9'
-      puts '9'
+      @functions.create_book
     when '10'
-      puts '10'
+      @methods.add_music_album
     when '11'
-      puts '11'
+      @functions.create_movie
     when '12'
-      puts '12'
+      @show.create_game
     when '0'
-      puts 'E'
+      puts ''
     else
       puts 'Seems like an invalid entry!'
     end
