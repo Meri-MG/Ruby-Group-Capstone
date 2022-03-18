@@ -1,8 +1,7 @@
 require_relative './Movies-Source/class_functions'
 require_relative './MusicAlbums-Genres/classes/music_album'
-require_relative './MusicAlbums-Genres/modules/music_album_mule'
-require_relative './MusicAlbums-Genres/modules/genres_module'
 require_relative './MusicAlbums-Genres/classes/genre'
+require_relative './MusicAlbums-Genres/classes/methods'
 require 'json'
 require './item'
 
@@ -14,8 +13,7 @@ class App
 
   def initialize
     @functions = Functions.new
-    @music_albums = load_music_albums
-    @genres = load_genres
+    @methods = List.new
   end
 
   def run
@@ -74,13 +72,13 @@ class App
     when '1'
       @functions.list_books
     when '2'
-      list_all_music_album
+      @methods.list_all_music_album
     when '3'
       @functions.list_movies
     when '4'
       puts '4'
     when '5'
-      list_all_genres
+      @methods.list_all_genres
     when '6'
       @functions.list_labels
     when '7'
@@ -90,7 +88,7 @@ class App
     when '9'
       @functions.create_book
     when '10'
-      add_music_album
+      @methods.add_music_album
     when '11'
       @functions.create_movie
     when '12'

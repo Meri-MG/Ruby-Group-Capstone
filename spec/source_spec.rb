@@ -1,5 +1,4 @@
-require_relative '../source'
-require_relative '../movie'
+require_relative 'spec_helper'
 require 'date'
 
 describe Source do
