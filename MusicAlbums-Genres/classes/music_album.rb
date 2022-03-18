@@ -1,4 +1,5 @@
 require './item'
+# rubocop: disable Style/OptionalBooleanParameter
 
 class MusicAlbum < Item
   attr_accessor :on_spotify, :name
@@ -13,3 +14,5 @@ class MusicAlbum < Item
     super && @on_spotify
   end
 end
+
+# rubocop: enable Style/OptionalBooleanParameter
