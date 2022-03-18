@@ -1,5 +1,9 @@
 require_relative './MusicAlbums-Genres/classes/music_album'
 require_relative './MusicAlbums-Genres/modules/music_album_mule'
+require_relative './MusicAlbums-Genres/modules/genres_module'
+require_relative './MusicAlbums-Genres/classes/genre'
+require 'json'
+require './item'
 # rubocop: disable Metrics
 
 class App
@@ -7,7 +11,7 @@ class App
 
   def initialize
     @music_albums = load_music_albums
-    @load_genres = []
+    @genres = load_genres
   end
 
   puts 'Welcome to your Catalog!'
@@ -29,16 +33,6 @@ class App
          '12 - Add a game',
          '13 - Exit'
   end
-
-  # loop do
-  #   list_of_options
-
-  #   option_entry = gets.chomp.downcase
-
-  #   break if option_entry == '0'
-
-  #   option_chosen(option_entry)
-  # end
 
   def option_chosen(option)
     case option
@@ -79,23 +73,31 @@ class App
 
   def list_all_genres
     puts 'Genres'
-    @load_genres.each do |genre|
+    load_genres.each do |genre|
       puts "Genre name: #{genre.name}"
     end
   end
 
   def add_music_album
-    puts 'Album name: '
+    print 'Album name: '
     name = gets.chomp
 
-    puts 'Date of publish [Enter date in format (yyyy-mm-dd)]'
+    print 'Genre: '
+    album_genre = gets.chomp
+
+    print 'Date of publish [Enter date in format (yyyy-mm-dd)] '
     publish_date = gets.chomp
 
-    puts 'Is it available on Spotify? Y/N'
+    print 'Is it available on Spotify? Y/N '
     on_spotify = gets.chomp.downcase == 'y' || false
 
     @music_albums.push(MusicAlbum.new(name, publish_date, on_spotify))
     puts 'Music album created'
+    create_music_album
+
+    @genres << Genre.new(album_genre)
+    puts 'Genre created successfully'
+    create_genre
   end
 
   def run
@@ -105,7 +107,6 @@ class App
       option = gets.chomp
       option_chosen(option)
     end
-    create_music_album
     puts 'Thanks for using our app'
   end
 end

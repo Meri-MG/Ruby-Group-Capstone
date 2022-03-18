@@ -8,10 +8,9 @@ class Item
   attr_accessor :publish_date
   attr_reader :id, :archived, :label, :genre, :author, :source
 
-  def initialize(_id, name, publish_date, archived: false)
+  def initialize(publish_date, archived = false)
     @id = @@id
     @@id += 1
-    @name = name
     @publish_date = Date.parse(publish_date)
     @archived = archived
   end
