@@ -46,7 +46,7 @@ In order to run unit tests on the local machine Rspec gem should be installed
 
 ## Live Presentation
 
-[Video_link](https://www.loom.com/share/1fb51bea8ff64da382b6f301a4b8a3cb)
+[Video link](https://www.youtube.com/watch?v=zXO6hT4JF2U)
 
 ## Author
 
