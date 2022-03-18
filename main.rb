@@ -1,12 +1,11 @@
 # rubocop: disable Metrics
 require 'json'
-require './game'
-require './item'
-require './author'
-require './create_author'
-require './list_items'
-require './author_json_handle'
-require './data_json'
+require_relative './Games-Authors/game'
+require_relative './item'
+require_relative './Games-Authors/author'
+require_relative './Games-Authors/create_author'
+require_relative './Games-Authors/list_items'
+require_relative './Games-Authors/author_json_handle'
 
 class App
   include CreateAuthor
