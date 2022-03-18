@@ -23,11 +23,4 @@ module DisplayItems
       index += 1
     end
   end
-
-  def display_more_details(item)
-    puts "Genre: #{item.genre.name}" if item.genre
-    puts "Author: first name: #{item.author.first_name} last name: #{item.author.last_name}" if item.author
-    puts "Label : title: #{item.label.title} color: #{item.label.color}" if item.label
-    puts "Source: #{item.source.name}" if item.source
-  end
 end
