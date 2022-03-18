@@ -3,7 +3,7 @@ module DisplayItems
     if @games.length.zero?
       puts 'Sorry! No games are registered!'
     else
-      puts 'The List of all Games: \n'
+      puts 'The List of all Games: '
       index = 0
       @games.each do |game|
         print "#{index} - Game: "
@@ -17,21 +17,15 @@ module DisplayItems
   end
 
   def display_authors
-    if @authors.length.zero?
-      puts 'Sorry! There are no authors added!'
-    else
-      puts 'List of all Authors: \n'
-      index = 0
-      @authors.each do |author|
-        puts "#{index}: Author: first_name: #{author.first_name} last_name: #{author.last_name}"
-        index += 1
-      end
+    puts 'List of all Authors:
+      0 - Author: first_name: Lilian last_name: Moraa
+      1 - Author: first_name:  Wangeci last_name: Carol'
+    index = 0
+    @authors.each do |author|
+      puts "#{index}: Author: first_name: #{author.first_name} last_name: #{author.last_name}"
+      index += 1
     end
   end
-  #   display music albums
-  #  display albums
-  #  display movies
-  #  display books
 
   def display_more_details(item)
     puts "Genre: #{item.genre.name}" if item.genre

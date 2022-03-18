@@ -14,7 +14,8 @@ module CreateAuthor
     print 'publish_date: '
     publish_date = gets.chomp
     print 'multiplayer: '
-    multiplayer = gets.chompprint 'last_played_at: '
+    multiplayer = gets.chomp
+    print 'last_played_at: '
     last_played_at = gets.chomp
     @games << Game.new(publish_date, multiplayer, last_played_at)
     puts 'Game Created'
