@@ -49,33 +49,6 @@ class App
     puts 'Thanks for using our app!'
 
     @functions.save_on_exit
-
-    # def run
-    #   option = 0
-    #   while option.to_i < 13
-    #     list_of_options
-    #     option = gets.chomp
-    #     option_chosen(option)
-    #   end
-    #   puts 'Thanks for using our app'
-    # end
-    # require_relative './MusicAlbums-Genres/classes/music_album'
-    # require_relative './MusicAlbums-Genres/modules/music_album_mule'
-    # require_relative './MusicAlbums-Genres/modules/genres_module'
-    # require_relative './MusicAlbums-Genres/classes/genre'
-    # require 'json'
-    # require './item'
-    #
-
-    # class App
-    #   include MusicAlbumModule
-
-    #   def initialize
-    #     @music_albums = load_music_albums
-    #     @genres = load_genres
-    #   end
-
-    # puts 'Welcome to your Catalog!'
   end
 
   def list_of_options
