@@ -1,9 +1,14 @@
 class Author
   attr_accessor :first_name, :last_name
-  attr_writer :id
+  attr_reader :id, :items
+
+  @@authors = []
+  @@authors_filename = 'authors.json'
+  @@id = 1
 
   def initialize(first_name, last_name)
-    @id = Random.rand(1..1000)
+    @id = @@id
+    @@id += 1
     @first_name = first_name
     @last_name = last_name
     @items = []
@@ -11,11 +16,11 @@ class Author
 
   def add_item(item)
     @items.push(item) unless @items.include?(item)
-    item.author(self)
+    item.author = self
   end
 
-  def show_items
-    @items
+  def self.overwrite_authors(arr)
+    @@authors = arr
   end
 
   def to_json(*args)
