@@ -44,7 +44,6 @@ class App
       break if option_entry == '0'
 
       option_chosen(option_entry)
-
     end
 
     puts 'Thanks for using our app!'
@@ -60,23 +59,23 @@ class App
     #   end
     #   puts 'Thanks for using our app'
     # end
-# require_relative './MusicAlbums-Genres/classes/music_album'
-# require_relative './MusicAlbums-Genres/modules/music_album_mule'
-# require_relative './MusicAlbums-Genres/modules/genres_module'
-# require_relative './MusicAlbums-Genres/classes/genre'
-# require 'json'
-# require './item'
-# # rubocop: disable Metrics
+    # require_relative './MusicAlbums-Genres/classes/music_album'
+    # require_relative './MusicAlbums-Genres/modules/music_album_mule'
+    # require_relative './MusicAlbums-Genres/modules/genres_module'
+    # require_relative './MusicAlbums-Genres/classes/genre'
+    # require 'json'
+    # require './item'
+    #
 
-# class App
-#   include MusicAlbumModule
+    # class App
+    #   include MusicAlbumModule
 
-#   def initialize
-#     @music_albums = load_music_albums
-#     @genres = load_genres
-#   end
+    #   def initialize
+    #     @music_albums = load_music_albums
+    #     @genres = load_genres
+    #   end
 
-  # puts 'Welcome to your Catalog!'
+    # puts 'Welcome to your Catalog!'
   end
 
   def list_of_options

@@ -1,3 +1,5 @@
+# rubocop:disable Style/ClassVars
+
 class Genre
   @@id = 1
   attr_accessor :name
@@ -15,3 +17,5 @@ class Genre
     item.genre = self
   end
 end
+
+# rubocop:enable Style/ClassVars
