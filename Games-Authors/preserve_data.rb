@@ -1,19 +1,19 @@
 require 'json'
-require_relative 'book'
-require_relative 'label'
+require_relative 'game'
+require_relative 'author'
 
 module DataLayer
   def object_to_hash(obj)
     obj.instance_variables.each_with_object({}) do |var, hash|
       key = var.to_s.delete('@')
       value = obj.instance_variable_get(var)
-      value = object_to_hash(value) if %w[Book Label].include?(value.class.name)
+      value = object_to_hash(value) if %w[Game Author].include?(value.class.name)
       hash[key] = value
       case obj.class.name
-      when 'Book'
-        hash['type'] = 'Book'
-      when 'Label'
-        hash['type'] = 'Label'
+      when 'Game'
+        hash['type'] = 'Game'
+      when 'Author'
+        hash['type'] = 'Author'
       end
       hash
     end
@@ -21,10 +21,10 @@ module DataLayer
 
   def hash_to_object(hash, classname)
     case classname
-    when 'Book'
-      Book.new(hash['title'], hash['publisher'], hash['cover_state'], hash['publish_date'], hash['archived'])
-    when 'Label'
-      Label.new(hash['title'], hash['color'])
+    when 'Game'
+      Game.new(hash['publish_date'], hash['multiplayer'], hash['last_played_at'], hash['archived'])
+    when 'Author'
+      Author.new(hash['first_name'], hash['last_name'])
     end
   end
 
