@@ -43,6 +43,11 @@ In order to run unit tests on the local machine Rspec gem should be installed
   rspec spec
   ```
 - For more information please visit [RubyGuides](https://www.rubyguides.com/2018/07/rspec-tutorial/).
+
+## Live Presentation
+
+[Video_link](https://www.loom.com/share/1fb51bea8ff64da382b6f301a4b8a3cb)
+
 ## Author
 
 :woman: **Meri Gogichashvili**
