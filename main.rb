@@ -5,13 +5,14 @@ require_relative './item'
 require_relative './Games-Authors/author'
 require_relative './Games-Authors/create_author'
 require_relative './Games-Authors/list_items'
-require_relative './Games-Authors/author_json_handle'
+require_relative './Games-Authors/preserve_data'
 
 class App
   include CreateAuthor
   include DisplayItems
-  include AuthorJsonHandle
   include CreateAuthor
+
+  include DataLayer
 
   def initialize
     @games = []
@@ -21,6 +22,14 @@ class App
   end
 
   def run
+    games_path = Game.class_variable_get(:@@games_filename)
+    Game.overwrite_games(read_data(games_path).map { |hash| hash_to_object(hash, 'Game') })
+    @games = Game.class_variable_get(:@@games)
+
+    authors_path = Author.class_variable_get(:@@authors_filename)
+    Author.overwrite_authors(read_data(authors_path).map { |hash| hash_to_object(hash, 'Author') })
+    @authors = Author.class_variable_get(:@@authors)
+
     loop do
       list_of_options
 
@@ -30,6 +39,16 @@ class App
 
       option_chosen(option_entry)
     end
+
+    Game.overwrite_games(@games)
+    Author.overwrite_authors(@authors)
+
+    games_path = Game.class_variable_get(:@@games_filename)
+    games_data = Game.class_variable_get(:@@games).map { |obj| object_to_hash(obj) }
+    authors_path = Author.class_variable_get(:@@authors_filename)
+    authors_data = Author.class_variable_get(:@@authors).map { |obj| object_to_hash(obj) }
+    save_data(games_path, games_data)
+    save_data(authors_path, authors_data)
   end
 
   def list_of_options
@@ -81,11 +100,6 @@ class App
     else
       puts 'Seems like an invalid entry!'
     end
-  end
-
-  def open_files
-    open_games
-    open_authors
   end
 end
 
