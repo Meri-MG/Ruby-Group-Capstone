@@ -1,3 +1,5 @@
+# rubocop:disable Style/ClassVars
+
 class Author
   attr_accessor :first_name, :last_name
   attr_reader :id, :items
@@ -33,3 +35,5 @@ class Author
     }.to_json(*args)
   end
 end
+
+# rubocop:enable Style/ClassVars

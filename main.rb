@@ -4,9 +4,7 @@ require_relative './MusicAlbums-Genres/classes/genre'
 require_relative './MusicAlbums-Genres/classes/methods'
 require_relative './Games-Authors/game'
 require_relative './Games-Authors/author'
-require_relative './Games-Authors/create_author'
 require_relative './Games-Authors/list_items'
-require_relative './Games-Authors/preserve_data'
 require 'json'
 require './item'
 
@@ -15,12 +13,11 @@ require './item'
 class App
   include DataLayer
   include MusicAlbumModule
-  include CreateAuthor
-  include DisplayItems
 
   def initialize
     @functions = Functions.new
     @methods = List.new
+    @show = DisplayItems.new
     @games = []
     @authors = []
   end
@@ -43,35 +40,11 @@ class App
 
     games_path = Game.class_variable_get(:@@games_filename)
     Game.overwrite_games(read_data(games_path).map { |hash| hash_to_object(hash, 'Game') })
-    @games = Game.class_variable_get(:@@games)
 
     authors_path = Author.class_variable_get(:@@authors_filename)
     Author.overwrite_authors(read_data(authors_path).map { |hash| hash_to_object(hash, 'Author') })
-    @authors = Author.class_variable_get(:@@authors)
 
     puts 'Welcome to your Catalog!'
-  # include CreateAuthor
-  # include DisplayItems
-  # include CreateAuthor
-
-  # include DataLayer
-
-  # def initialize
-  #   @games = []
-  #   @authors = []
-  #   puts 'Welcome to Catalog My Things App!'
-  #   puts
-  # end
-
-  # def run
-    # games_path = Game.class_variable_get(:@@games_filename)
-    # Game.overwrite_games(read_data(games_path).map { |hash| hash_to_object(hash, 'Game') })
-    # @games = Game.class_variable_get(:@@games)
-
-    # authors_path = Author.class_variable_get(:@@authors_filename)
-    # Author.overwrite_authors(read_data(authors_path).map { |hash| hash_to_object(hash, 'Author') })
-    # @authors = Author.class_variable_get(:@@authors)
-
     loop do
       list_of_options
 
@@ -85,15 +58,7 @@ class App
     puts 'Thanks for using our app!'
 
     @functions.save_on_exit
-    Game.overwrite_games(@games)
-    Author.overwrite_authors(@authors)
-
-    games_path = Game.class_variable_get(:@@games_filename)
-    games_data = Game.class_variable_get(:@@games).map { |obj| object_to_hash(obj) }
-    authors_path = Author.class_variable_get(:@@authors_filename)
-    authors_data = Author.class_variable_get(:@@authors).map { |obj| object_to_hash(obj) }
-    save_data(games_path, games_data)
-    save_data(authors_path, authors_data)
+    @show.save_info
   end
 
   def list_of_options
@@ -123,13 +88,13 @@ class App
     when '3'
       @functions.list_movies
     when '4'
-      display_games
+      @show.display_games
     when '5'
       @methods.list_all_genres
     when '6'
       @functions.list_labels
     when '7'
-      display_authors
+      @show.display_authors
     when '8'
       @functions.list_sources
     when '9'
@@ -139,7 +104,7 @@ class App
     when '11'
       @functions.create_movie
     when '12'
-      create_game
+      @show.create_game
     when '0'
       puts ''
     else

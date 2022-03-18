@@ -1,5 +1,8 @@
 require_relative '../item'
 
+# rubocop:disable Style/ClassVars
+# rubocop:disable Style/OptionalBooleanParameter
+
 class Game < Item
   @@games = []
   @@games_filename = 'games.json'
@@ -33,3 +36,6 @@ class Game < Item
     super && @last_played_at.year(2) < current_date
   end
 end
+
+# rubocop:enable Style/ClassVars
+# rubocop:enable Style/OptionalBooleanParameter
