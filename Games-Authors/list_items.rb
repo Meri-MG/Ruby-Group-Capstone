@@ -17,9 +17,6 @@ module DisplayItems
   end
 
   def display_authors
-    puts 'List of all Authors:
-      0 - Author: first_name: Lilian last_name: Moraa
-      1 - Author: first_name:  Wangeci last_name: Carol'
     index = 0
     @authors.each do |author|
       puts "#{index}: Author: first_name: #{author.first_name} last_name: #{author.last_name}"
