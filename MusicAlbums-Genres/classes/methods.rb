@@ -2,13 +2,13 @@ require_relative '../modules/music_album_mule'
 require_relative '../modules/genres_module'
 
 class List
-include MusicAlbumModule
-def initialize
+  include MusicAlbumModule
+  def initialize
     @music_albums = load_music_albums
     @genres = load_genres
-end
+  end
 
-def list_all_music_album
+  def list_all_music_album
     puts 'Music Albums'
     puts 'There are no Music albums yet' if @music_albums.empty?
     @music_albums.each do |music_album|
