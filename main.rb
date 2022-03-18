@@ -1,8 +1,7 @@
 require_relative './Movies-Source/class_functions'
 require_relative './MusicAlbums-Genres/classes/music_album'
-require_relative './MusicAlbums-Genres/modules/music_album_mule'
-require_relative './MusicAlbums-Genres/modules/genres_module'
 require_relative './MusicAlbums-Genres/classes/genre'
+require_relative './MusicAlbums-Genres/classes/methods'
 require 'json'
 require './item'
 
@@ -10,12 +9,10 @@ require './item'
 
 class App
   include DataLayer
-  include MusicAlbumModule
 
   def initialize
     @functions = Functions.new
-    @music_albums = load_music_albums
-    @genres = load_genres
+    @methods = List.new
   end
 
   def run
@@ -74,13 +71,13 @@ class App
     when '1'
       @functions.list_books
     when '2'
-      list_all_music_album
+      @methods.list_all_music_album
     when '3'
       @functions.list_movies
     when '4'
       puts '4'
     when '5'
-      list_all_genres
+      @methods.list_all_genres
     when '6'
       @functions.list_labels
     when '7'
@@ -90,7 +87,7 @@ class App
     when '9'
       @functions.create_book
     when '10'
-      add_music_album
+      @methods.add_music_album
     when '11'
       @functions.create_movie
     when '12'
@@ -100,43 +97,6 @@ class App
     else
       puts 'Seems like an invalid entry!'
     end
-  end
-
-  def list_all_music_album
-    puts 'Music Albums'
-    puts 'There are no Music albums yet' if @music_albums.empty?
-    @music_albums.each do |music_album|
-      puts "Name: #{music_album.name}, Publish Date: #{music_album.publish_date}, On Spotify: #{music_album.on_spotify}"
-    end
-  end
-
-  def list_all_genres
-    puts 'Genres'
-    load_genres.each do |genre|
-      puts "Genre name: #{genre.name}"
-    end
-  end
-
-  def add_music_album
-    print 'Album name: '
-    name = gets.chomp
-
-    print 'Genre: '
-    album_genre = gets.chomp
-
-    print 'Date of publish [Enter date in format (yyyy-mm-dd)] '
-    publish_date = gets.chomp
-
-    print 'Is it available on Spotify? Y/N '
-    on_spotify = gets.chomp.downcase == 'y' || false
-
-    @music_albums.push(MusicAlbum.new(name, publish_date, on_spotify))
-    puts 'Music album created'
-    create_music_album
-
-    @genres << Genre.new(album_genre)
-    puts 'Genre created successfully'
-    create_genre
   end
 end
 
