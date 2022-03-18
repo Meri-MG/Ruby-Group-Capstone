@@ -18,8 +18,6 @@ class App
     @functions = Functions.new
     @methods = List.new
     @show = DisplayItems.new
-    @games = []
-    @authors = []
   end
 
   def run
