@@ -2,6 +2,9 @@ require 'json'
 require_relative 'movie'
 require_relative 'source'
 
+# rubocop:disable Metrics/CyclomaticComplexity
+# rubocop:disable Metrics/MethodLength
+
 module DataLayer
   def object_to_hash(obj)
     obj.instance_variables.each_with_object({}) do |var, hash|
@@ -56,3 +59,6 @@ module DataLayer
     data
   end
 end
+
+# rubocop:enable Metrics/MethodLength
+# rubocop:enable Metrics/CyclomaticComplexity
