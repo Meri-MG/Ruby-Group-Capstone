@@ -23,3 +23,4 @@ describe MusicAlbum do
     expect(@music.can_be_archived?).to be false
   end
 end
+

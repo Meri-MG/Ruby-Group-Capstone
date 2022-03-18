@@ -1,7 +1,8 @@
 CREATE DATABASE catalog;
 
-CREATE TABLE item (
+CREATE TABLE items (
     id  INT GENERATED ALWAYS AS IDENTITY,
+    source_id INT,
     genre_id INT,
     author_id INT,
     label_id INT,
@@ -10,7 +11,8 @@ CREATE TABLE item (
     PRIMARY KEY(id),
     FOREIGN KEY (genre_id) REFERENCES genres (id),
     FOREIGN KEY (author_id) REFERENCES authors (id),
-    FOREIGN KEY (label_id) REFERENCES labels (id)
+    FOREIGN KEY (label_id) REFERENCES labels (id),
+    FOREIGN KEY (source_id) REFERENCES sources (id)
 );
 
 CREATE TABLE genres (
@@ -26,11 +28,3 @@ CREATE TABLE music_albums (
     on_spotify BOOLEAN,
     FOREIGN KEY(id) REFERENCES item(id)
 );
-
--- CREATE TABLE authors 
--- CREATE TABLE labels 
-
-
-
--- CREATE TABLE games
--- CREATE TABLE books 

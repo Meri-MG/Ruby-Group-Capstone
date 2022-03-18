@@ -1,17 +1,15 @@
 class Genre
-  attr_accessor :name, :items
-
-  @@id = 1
+  attr_accessor :name
+  attr_reader :arr_i, :id
 
   def initialize(name)
-    @id = @@id
-    @@id += 1
+    @id = Random.rand(1..1000)
     @name = name
-    @items = []
+    @arr_i = []
   end
 
   def add_item(item)
-    @items << item unless @items.include?(item)
+    @arr_i << item
     item.genre = self
   end
 end
