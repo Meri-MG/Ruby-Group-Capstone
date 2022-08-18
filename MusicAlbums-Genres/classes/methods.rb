@@ -4,6 +4,7 @@ require_relative '../modules/genres_module'
 class List
   include MusicAlbumModule
 
+
   def initialize
     @music_albums = load_music_albums
     @genres = load_genres
